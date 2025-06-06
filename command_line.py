@@ -10,7 +10,10 @@ from renogymodbus.find_slaveaddress import find_slaveaddress
 RELAY_PIN = 10
 TEMP_ON_THRESHOLD = 23
 TEMP_OFF_THRESHOLD = 24
-CSV_FILE = "/home/madlab/charge_controller/controller_log.csv"
+
+# Define the CSV file path based on today's date
+today = datetime.date.today().strftime("%Y-%m-%d")
+CSV_FILE = f"/home/madlab/charge_controller/log_{today}.csv"
 
 # Setup GPIO for relay
 GPIO.setwarnings(False)
