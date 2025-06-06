@@ -15,7 +15,7 @@ TODAY=$(date +%F)
 DROPBOX_FOLDER="/Dorval-Solar"
 
 # Step 1: Find all log files except today’s and write them to a list
-find /home/madlab/charge_controller -name "log_*.csv" ! -name "log_${TODAY}.csv" > logs_to_upload.txt
+find /home/madlab/charge_controller -name "charge_controller_*.csv" ! -name "charge_controller_${TODAY}.csv" > logs_to_upload.txt
 
 # Step 2: Upload each file, one at a time, saving results to a file
 UPLOAD_LOG="/home/madlab/charge_controller/upload_output.txt"
@@ -37,7 +37,7 @@ while IFS= read -r line; do
   FULL_PATH=$(echo "$line" | cut -d'"' -f 2)
   BASENAME=$(basename "$FULL_PATH")
 
-  if [[ "$BASENAME" != "log_${TODAY}.csv" && -f "$FULL_PATH" ]]; then
+  if [[ "$BASENAME" != "charge_controller_${TODAY}.csv" && -f "$FULL_PATH" ]]; then
     echo "Deleting $FULL_PATH (confirmed on Dropbox)"
     rm -v "$FULL_PATH"
   else
