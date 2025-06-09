@@ -12,8 +12,8 @@ This repository extends a Pi already running `dendro-pi-main` by adding support 
 
 ```bash
 cd ~/dendro-pi-main  # Must already exist
-git clone https://github.com/alanfogel/Pi_ChargeController.git
-cd Pi_ChargeController
+git clone https://github.com/alanfogel/ChargeController.git
+cd ChargeController
 ```
 
 ### 2. Run the Setup Script  
