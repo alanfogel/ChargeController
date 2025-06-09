@@ -1,18 +1,16 @@
 #!/bin/bash
-# Go to the directory where your log files are saved
-cd /home/madlab/dendro-pi-main/ChargeController
+
+# Define paths
+LOG_DIR="/home/madlab/dendro-pi-main/ChargeController/logs"
+DROPBOX_FOLDER="/Dorval-Solar_TEST/"
+UPLOAD_LOG="/home/madlab/dendro-pi-main/ChargeController/logs/upload_output.txt"
 
 # Get today’s date in format YYYY-MM-DD
 TODAY=$(date +%F)
-DROPBOX_FOLDER="/Dorval-Solar_TEST/"
 
 # Step 1: Find all log files except today’s and write them to a list
-echo "Uploading all .csv files from /home/madlab/dendro-pi-main/ChargeController except today's file ($TODAY)..."
-find /home/madlab/dendro-pi-main/ChargeController -name "charge_controller_*.csv" ! -name "charge_controller_${TODAY}.csv" > logs_to_upload.txt
-
+echo "Uploading all .csv files from /home/madlab/dendro-pi-main/ChargeController except toda>find "$LOG_DIR" -name "charge_controller_*.csv" ! -name "charge_controller_${TODAY}.csv" > ">
 # Step 2: Upload each file, one at a time, saving results to a file
-UPLOAD_LOG="/home/madlab/dendro-pi-main/ChargeController/upload_output.txt"
-
 # Clear old log file before starting
 > "$UPLOAD_LOG"
 
@@ -20,10 +18,10 @@ while IFS= read -r FILE; do
   echo " > Uploading $FILE..."
   cd /home/madlab/dendro-pi-main/Dropbox-Uploader || exit 1
   ./dropbox_uploader.sh upload "$FILE" "$DROPBOX_FOLDER" | tee -a "$UPLOAD_LOG"
-done < /home/madlab/dendro-pi-main/ChargeController/logs_to_upload.txt
+done < "$LOG_DIR/logs_to_upload.txt"
 
 # Step 3: Parse the upload result to find files that already exist (same hash)
-grep "file exists with the same hash" /home/madlab/dendro-pi-main/ChargeController/upload_output.txt > /home/madlab/dendro-pi-main/ChargeController/already_uploaded.txt
+grep "file exists with the same hash" "$UPLOAD_LOG" > "$LOG_DIR/already_uploaded.txt"
 
 # Step 4: Delete any files that were confirmed already on Dropbox (skip today's file)
 while IFS= read -r line; do
@@ -37,11 +35,11 @@ while IFS= read -r line; do
   else
     echo "Skipping $FULL_PATH (today's file or missing)"
   fi
-done < /home/madlab/dendro-pi-main/ChargeController/already_uploaded.txt
+done < "$LOG_DIR/already_uploaded.txt"
 
 for file in already_uploaded.txt logs_to_upload.txt upload_output.txt; do
-  if [ -f "/home/madlab/dendro-pi-main/ChargeController/$file" ]; then
-    rm "/home/madlab/dendro-pi-main/ChargeController/$file"
+  if [ -f "$LOG_DIR/$file" ]; then
+    rm "$LOG_DIR/$file"
     echo "Deleted $file"
   fi
 done
