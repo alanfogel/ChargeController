@@ -15,6 +15,7 @@ TODAY=$(date +%F)
 DROPBOX_FOLDER="/Dorval-Solar"
 
 # Step 1: Find all log files except today’s and write them to a list
+echo "Uploading all .csv files from /home/madlab/charge_controller except today's file ($TODAY)..."
 find /home/madlab/charge_controller -name "charge_controller_*.csv" ! -name "charge_controller_${TODAY}.csv" > logs_to_upload.txt
 
 # Step 2: Upload each file, one at a time, saving results to a file
@@ -24,6 +25,7 @@ UPLOAD_LOG="/home/madlab/charge_controller/upload_output.txt"
 > "$UPLOAD_LOG"
 
 while IFS= read -r FILE; do
+  echo " > Uploading $FILE..."
   cd /home/madlab/Dropbox-Uploader || exit 1
   ./dropbox_uploader.sh upload "$FILE" "/Dorval-Solar/" | tee -a "$UPLOAD_LOG"
 done < /home/madlab/charge_controller/logs_to_upload.txt

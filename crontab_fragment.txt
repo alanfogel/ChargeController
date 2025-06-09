@@ -1,0 +1,2 @@
+*/5 * * * * /home/madlab/dendro-pi-main/charge-controller-addon/venv/bin/renogymodbus --device charge_controller --portname /dev/ttyUSB0 --slaveaddress 17
+3 3 * * * bash /home/madlab/dendro-pi-main/charge-controller-addon/upload-to-dropbox_SOLAR.sh

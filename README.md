@@ -1,6 +1,8 @@
 # Pi Charge Controller Setup
 
-This repository contains scripts and instructions to set up a Raspberry Pi to monitor a solar charge controller and upload data to Dropbox daily.
+This repository extends a Pi already running `dendro-pi-main` by adding support for logging and uploading solar charge controller data.
+
+---
 
 ---
 
@@ -9,25 +11,25 @@ This repository contains scripts and instructions to set up a Raspberry Pi to mo
 ### 1. Clone This Repository
 
 ```bash
+cd ~/dendro-pi-main  # Must already exist
 git clone https://github.com/alanfogel/Pi_ChargeController.git
 cd Pi_ChargeController
 ```
 
-### 2. Run the Setup Script
-
+### 2. Run the Setup Script  
+##### (This may take several minutes)
 ```bash
-chmod +x setup.sh
-./setup.sh
+bash setup.sh
 ```
 
-### 3. Manual Steps (if needed)
+### 3. Manual Steps (if setup script fails)
 Update renogymodbus manually (if not automated):
 ```bash
 cp command_line.py venv/lib/python3.11/site-packages/renogymodbus/command_line.py
 ```
 
 
-### 4. Installed Crontab Jobs
+### 4. Install Crontab Jobs
 ```bash
 crontab -e
 ```
