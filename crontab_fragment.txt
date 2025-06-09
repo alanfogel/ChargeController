@@ -1,2 +1,5 @@
+
+# Reads the charge controller every 5 minutes
 */5 * * * * /home/madlab/dendro-pi-main/ChargeController/venv/bin/renogymodbus --device charge_controller --portname /dev/ttyUSB0 --slaveaddress 17
+# Upload Charge Controller Data every day (3:03am)
 3 3 * * * bash /home/madlab/dendro-pi-main/ChargeController/upload-to-dropbox_SOLAR.sh

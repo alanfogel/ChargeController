@@ -22,6 +22,13 @@ cd ChargeController
 bash setup.sh
 ```
 
+### 3. Update the dropbox folder name in `upload-to-dropbox.sh`
+```bash
+nano upload-to-dropbox.sh
+```
+- Change line 15: ```DROPBOX_FOLDER="/Dorval-Solar_TEST```
+to your desired folder name, e.g., `DROPBOX_FOLDER="/Dorval-Solar"`.
+
 ### Manual Steps (if setup script fails)
 1. Install the required Python packages:
 ```bash
