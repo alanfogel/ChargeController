@@ -44,4 +44,3 @@ crontab -e
 
 # Take Solar Charge Controller measurements every 5 minutes
 */5 * * * * /home/madlab/charge_controller/venv/bin/renogymodbus --device charge_controller --portname /dev/ttyUSB0 --slaveaddress 17
-````
