@@ -13,7 +13,7 @@ TEMP_OFF_THRESHOLD = 24
 
 # Define the CSV file path based on today's date
 today = datetime.date.today().strftime("%Y-%m-%d")
-CSV_FILE = f"/home/madlab/dendro-pi-main/ChargeController/charge_controller_${today}.csv"
+CSV_FILE = f"/home/madlab/dendro-pi-main/ChargeController/charge_controller_{today}.csv"
 
 # Setup GPIO for relay
 GPIO.setwarnings(False)

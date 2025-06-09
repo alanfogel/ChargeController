@@ -3,7 +3,8 @@
 This repository extends a Pi already running `dendro-pi-main` by adding support for logging and uploading solar charge controller data.
 
 ---
-
+## Prerequisites
+- Make sure you have followed the initial setup instructions from: https://github.com/alanfogel/dendro-pi-main
 ---
 
 ## 🔧 Initial Setup Instructions (On Raspberry Pi)
@@ -22,9 +23,9 @@ cd ChargeController
 bash setup.sh
 ```
 
-### 3. Update the dropbox folder name in `upload-to-dropbox.sh`
+### 3. Update the dropbox folder name in `upload-to-dropbox_SOLAR.sh`
 ```bash
-nano upload-to-dropbox.sh
+nano upload-to-dropbox_SOLAR.sh
 ```
 - Change line 15: ```DROPBOX_FOLDER="/Dorval-Solar_TEST```
 to your desired folder name, e.g., `DROPBOX_FOLDER="/Dorval-Solar"`.
