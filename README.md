@@ -22,18 +22,22 @@ cd Pi_ChargeController
 bash setup.sh
 ```
 
-### 3. Manual Steps (if setup script fails)
-Update renogymodbus manually (if not automated):
+### Manual Steps (if setup script fails)
+1. Install the required Python packages:
+```bash
+pip install -r requirements.txt
+```
+
+2. Update renogymodbus manually (if not automated):
 ```bash
 cp command_line.py venv/lib/python3.11/site-packages/renogymodbus/command_line.py
 ```
 
-
-### 4. Install Crontab Jobs
+3. Install Crontab Jobs
 ```bash
 crontab -e
 ```
-#### Add the following lines to the crontab file:
+- Add the following lines to the crontab file:
 ```bash
 # Upload Charge Controller Data every day (3am)
 3 0 * * * sh /home/madlab/dendro-pi-main/upload-to-dropbox.sh
