@@ -4,7 +4,7 @@ cd /home/madlab/dendro-pi-main/ChargeController
 
 # Get today’s date in format YYYY-MM-DD
 TODAY=$(date +%F)
-DROPBOX_FOLDER="/Dorval-Solar_TEST"
+DROPBOX_FOLDER="/Dorval-Solar_TEST/"
 
 # Step 1: Find all log files except today’s and write them to a list
 echo "Uploading all .csv files from /home/madlab/dendro-pi-main/ChargeController except today's file ($TODAY)..."
