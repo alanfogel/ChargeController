@@ -50,4 +50,9 @@ crontab -e
 3 0 * * * sh /home/madlab/dendro-pi-main/upload-to-dropbox.sh
 
 # Take Solar Charge Controller measurements every 5 minutes
-*/5 * * * * /home/madlab/charge_controller/venv/bin/renogymodbus --device charge_controller --portname /dev/ttyUSB0 --slaveaddress 17
+*/5 * * * * /home/madlab/charge_controller/venv/bin/renogymodbus --device charge_controller --portname /dev/ttyUSB0 --slaveaddress 1
+```
+
+## Troubleshooting
+1. ```minimalmodbus.NoResponseError: No communication with the instrument (no answer)```
+   - The ```slaveaddress #``` argument in crontab may be in correct. The default is 1, but it may be different for your setup. A previous setup I had used the address 17.

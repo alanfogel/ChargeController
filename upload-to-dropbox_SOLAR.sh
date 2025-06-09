@@ -1,12 +1,4 @@
 #!/bin/bash
-# cd /home/madlab/dendro-pi-main/Dropbox-Uploader
-# ./dropbox_uploader.sh upload ~/dendro-pi-main/pictures/* /Dorval-2/ | grep "file exists with the same hash" > already_uploaded.txt
-
-# while IFS= read -r line; do
-#   FILENAME=$(echo "$line" | cut -d'"' -f 2)
-#   rm $FILENAME
-# done < already_uploaded.txt
-
 # Go to the directory where your log files are saved
 cd /home/madlab/dendro-pi-main/ChargeController
 
@@ -26,8 +18,8 @@ UPLOAD_LOG="/home/madlab/dendro-pi-main/ChargeController/upload_output.txt"
 
 while IFS= read -r FILE; do
   echo " > Uploading $FILE..."
-  cd /home/madlab/Dropbox-Uploader || exit 1
-  ./dropbox_uploader.sh upload "$FILE" "/Dorval-Solar_TEST/" | tee -a "$UPLOAD_LOG"
+  cd /home/madlab/dendro-pi-main/Dropbox-Uploader || exit 1
+  ./dropbox_uploader.sh upload "$FILE" "$DROPBOX_FOLDER" | tee -a "$UPLOAD_LOG"
 done < /home/madlab/dendro-pi-main/ChargeController/logs_to_upload.txt
 
 # Step 3: Parse the upload result to find files that already exist (same hash)
