@@ -1,8 +1,17 @@
 # Pi Charge Controller Setup
 
 This repository extends a Pi already running `dendro-pi-main` by adding support for logging and uploading solar charge controller data. 
+The file is saved in CSV format with a timestamp to differentiate each day's data for the upload script.
 It also controls a relay to turn on/off a load based on the charge controller temperature.
 #### Todo: Explain the relay setup and how to set the threshold that turns the relay on/off.
+
+The defualt behaviour of this system is to log the charge controller data every 5 minutes and upload it to Dropbox every day at 3am.
+
+Example output of the CSV file:
+| Timestamp           | Controller Temp (°C) | Battery Voltage (V) | State of Charge (%) | Relay State (On=True) | Solar Voltage (V) | Solar Current (A) | Solar Power (W) | Battery Temp (°C) | Max Solar Today (W) | Min Solar Today (W) | Max Battery V Today (V) | Min Battery V Today (V) |
+|---------------------|----------------------|---------------------|---------------------|-----------------------|-------------------|-------------------|-----------------|-------------------|---------------------|---------------------|-------------------------|-------------------------|
+| 2025-06-09T00:00:02.523821 | 20                   | 12.3                | 56                  | False                 | 0                 | 0                 | 0               | 25                | 5                   | 0                   | 12.6                    | 12.2                    |
+
 ---
 ## Prerequisites
 - Make sure you have followed the initial setup instructions from: https://github.com/alanfogel/dendro-pi-main
