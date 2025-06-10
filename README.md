@@ -1,7 +1,8 @@
 # Pi Charge Controller Setup
 
-This repository extends a Pi already running `dendro-pi-main` by adding support for logging and uploading solar charge controller data.
-
+This repository extends a Pi already running `dendro-pi-main` by adding support for logging and uploading solar charge controller data. 
+It also controls a relay to turn on/off a load based on the charge controller temperature.
+#### Todo: Explain the relay setup and how to set the threshold that turns the relay on/off.
 ---
 ## Prerequisites
 - Make sure you have followed the initial setup instructions from: https://github.com/alanfogel/dendro-pi-main
