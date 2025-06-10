@@ -9,7 +9,8 @@ UPLOAD_LOG="/home/madlab/dendro-pi-main/ChargeController/logs/upload_output.txt"
 TODAY=$(date +%F)
 
 # Step 1: Find all log files except today’s and write them to a list
-echo "Uploading all .csv files from /home/madlab/dendro-pi-main/ChargeController except toda>find "$LOG_DIR" -name "charge_controller_*.csv" ! -name "charge_controller_${TODAY}.csv" > ">
+echo "Uploading all .csv files from $LOG_DIR except today's file ($TODAY)..."
+find "$LOG_DIR" -name "charge_controller_*.csv" ! -name "charge_controller_${TODAY}.csv" > "$LOG_DIR/logs_to_upload.txt"
 # Step 2: Upload each file, one at a time, saving results to a file
 # Clear old log file before starting
 > "$UPLOAD_LOG"
