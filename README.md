@@ -4,7 +4,7 @@ This repository extends a Pi already running `dendro-pi-main` by adding support 
 The file is saved in CSV format with a timestamp to differentiate each day's data for the upload script.
 It also controls a relay to turn on/off a load based on the charge controller temperature.
 
-The default behaviour of this system is to log the charge controller data every 5 minutes and upload it to Dropbox every day at 3am.
+The default behaviour of this system is to log the charge controller data every 5 minutes and upload it to Dropbox every 30 minutes.
 
 Example output of the CSV file:
 | Timestamp           | Controller Temp (°C) | Battery Voltage (V) | State of Charge (%) | Relay State (On=True) | Solar Voltage (V) | Solar Current (A) | Solar Power (W) | Battery Temp (°C) | Max Solar Today (W) | Min Solar Today (W) | Max Battery V Today (V) | Min Battery V Today (V) |
