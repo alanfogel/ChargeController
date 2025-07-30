@@ -10,7 +10,8 @@ TODAY=$(date +%F)
 
 # Step 1: Find all log files except today’s and write them to a list
 echo "Uploading all .csv files from $LOG_DIR except today's file ($TODAY)..."
-find "$LOG_DIR" -name "charge_controller_*.csv" ! -name "charge_controller_${TODAY}.csv" > "$LOG_DIR/logs_to_upload.txt"
+find "$LOG_DIR" -name "charge_controller_*.csv" > "$LOG_DIR/logs_to_upload.txt"
+
 # Step 2: Upload each file, one at a time, saving results to a file
 # Clear old log file before starting
 > "$UPLOAD_LOG"
